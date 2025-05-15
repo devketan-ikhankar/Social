@@ -1,35 +1,76 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Login from './login'
+import Register from './register'
+
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+
+function App() {
+  const [send, setSend] = useState('')
+  // const [count, setCount] = useState(0)
+  // const [name, setName] = useState('ketan')
+
+  // const handleClick = () => {
+  //   if (count >= 5) {
+  //     return;
+  //   }
+  //   setCount((count) => count + 1)
+
+
+
+  // }
+
+
+  // const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
+
+  //   setName(e.target.value)
+
+
+  // }
+
+
+
+  // const handleClick1 = (e: {target: { value: SetStateAction<string> } }) => {
+  //   setPassword(e.target.value)
+
+  // }
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      {/* <div>
+      
       </div>
-      <h1>Vite + React</h1>
+     
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={handleClick}>
           count is {count}
+
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+     
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    
+
+
+      <p>Name is : {name}</p>
+      <input style={{ width: '200px', height: '30px', borderRadius: '5px', border: '1px solid black' }}
+        onChange={handleChange}
+
+        type="text" placeholder="Enter your name" /> */}
+
+
+
+      <div>
+        <p>{send}</p>
+        <Login send={setSend} />
+        <Register
+
+
+        />
+      </div>
     </>
   )
 }
+
+
 
 export default App
