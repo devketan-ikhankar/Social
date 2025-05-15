@@ -1,66 +1,22 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import Login from './Login';
+import Register from './Register';
 
+const App = () => {
+  const [loginData, setLoginData] = useState('');
+  const [registerData, setRegisterData] = useState('');
 
-import './App.css'
-
-
-
-function App() {
- 
-  const [count, setCount] = useState(0)
-  const [name, setName] = useState('')
-
-  const handleClick = () => {
-    if (count >= 5) {
-      return;
-    }
-    setCount((count) => count + 1)
-
-
-
-  }
-
-
-  const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
-
-    setName(e.target.value)
-
-
-  }
-
-
-
-  const handleClick1 = (e: {target: { value: SetStateAction<string> } }) => {
-    setPassword(e.target.value)
-
-  }
   return (
-    <>
-     
-     
-      <div className="card">
-        <button onClick={handleClick}>
-          count is {count}
+    <div>
+      <h2>Login Output:</h2>
+      <p>{loginData}</p>
+      <Login send={setLoginData} />
 
-        </button>
-     
-      </div>
-    
+      <h2>Register Output:</h2>
+      <p>{registerData}</p>
+      <Register send1={setRegisterData} />
+    </div>
+  );
+};
 
-
-      <p>Name is : {name}</p>
-      <input style={{ width: '200px', height: '30px', borderRadius: '5px', border: '1px solid black' }}
-        onChange={handleChange}
-
-        type="text" placeholder="Enter your name" />
-
- 
-
-     
-    </>
-  )
-}
-
-
-
-export default App
+export default App;

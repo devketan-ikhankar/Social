@@ -1,61 +1,66 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const Login = ({ send }) => {
-    const [username, setUsername] = useState(
-        {
-            user: '',
-            pass: ''
-        }
-    )
-    const [password, setPassword] = useState('')
+    const [credentials, setCredentials] = useState({ user: '', pass: '' });
+    const [submittedData, setSubmittedData] = useState('');
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
-    // const handleClick = (e: { target: { value: SetStateAction<string> } }) => {
-    //     setUsername(e.target.value)
+    const handleLogin = () => {
+        setSubmittedData(JSON.stringify(credentials));
+         send(submittedData);
+    };
 
-    // }
-    function login() {
-        setPassword(JSON.stringify(username))
-        send(password)
+    const handleReset = () => {
+        setCredentials({ user: '', pass: '' });
+        setSubmittedData('');
+        
+    };
 
-    }
-
-    function reset() {
-        const u = document.getElementById('u')
-        const p = document.getElementById('p')
-        u.value = ''
-        p.value = ''
-        setUsername('')
-        setPassword('')
-
-
-    }
-
-    function handleChange(e) {
-        setUsername((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }))
-    }
-
-    
-
+  
     return (
         <div>
-            <h1>Login form</h1>
-            <p>Username:  {username.user} </p>
-            <p>Password:  {username.pass} </p>
-            <form>
-                Username:<input onChange={handleChange} type="text" id='u' name='user' placeholder="Enter your Username" />
-                Password:  <input onChange={handleChange} type="password" name='pass' id='p' placeholder="Enter your password" />
+            <h1>Login Form</h1>
+            <p>Username: {credentials.user}</p>
+            <p>Password: {credentials.pass}</p>
 
-                <button onClick={reset} type="button">Reset</button>
-                <button onClick={login} type="button">Login</button>
-                
-                <p> {password}</p>
-            </form></div>
-    )
-}
+            <form onSubmit={(e) => e.preventDefault()}>
+                <label>
+                    Username:
+                    <input
+                        type="text"
+                        name="user"
+                        value={credentials.user}
+                        onChange={handleChange}
+                        placeholder="Enter your username"
+                    />
+                </label>
+                <br />
+                <label>
+                    Password:
+                    <input
+                        type="password"
+                        name="pass"
+                        value={credentials.pass}
+                        onChange={handleChange}
+                        placeholder="Enter your password"
+                    />
+                </label>
+                <br />
+                <button type="button" onClick={handleReset}>Reset</button>
+                <button type="button" onClick={handleLogin}>Login</button>
+               
 
-export default Login
+                <p>{submittedData}</p>
+            </form>
+        </div>
+    );
+};
 
+export default Login;
