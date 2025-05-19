@@ -1,10 +1,15 @@
 import { useState } from 'react';
 
-const Login = ({ send }) => {
+interface LoginProps {
+    send: (data: string) => void;
+    answer: (data: void ) => void;
+}
+
+const Login = ({ send, answer }: LoginProps) => {
     const [credentials, setCredentials] = useState({ user: '', pass: '' });
     const [submittedData, setSubmittedData] = useState('');
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setCredentials(prev => ({
             ...prev,
@@ -14,16 +19,16 @@ const Login = ({ send }) => {
 
     const handleLogin = () => {
         setSubmittedData(JSON.stringify(credentials));
-         send(submittedData);
+        send(submittedData);
     };
 
     const handleReset = () => {
         setCredentials({ user: '', pass: '' });
         setSubmittedData('');
-        
+
     };
 
-  
+
     return (
         <div>
             <h1>Login Form</h1>
@@ -36,7 +41,7 @@ const Login = ({ send }) => {
                     <input
                         type="text"
                         name="user"
-                        value={credentials.user}
+                        // value={credentials.user}// input pe naam show krta
                         onChange={handleChange}
                         placeholder="Enter your username"
                     />
@@ -47,7 +52,7 @@ const Login = ({ send }) => {
                     <input
                         type="password"
                         name="pass"
-                        value={credentials.pass}
+                        // value={credentials.pass}
                         onChange={handleChange}
                         placeholder="Enter your password"
                     />
@@ -55,7 +60,8 @@ const Login = ({ send }) => {
                 <br />
                 <button type="button" onClick={handleReset}>Reset</button>
                 <button type="button" onClick={handleLogin}>Login</button>
-               
+                <button type="button" onClick={() => answer()}>Login</button>
+
 
                 <p>{submittedData}</p>
             </form>

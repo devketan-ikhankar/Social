@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-const Register = ({ send1 }) => {
+interface RegisterProps {
+  send1: (data: string) => void;
+   answer: (data: void ) => void;
+}
+
+const Register = ({ send1,answer }: RegisterProps) => {
   const [reguser, setReguser] = useState({
     user: '',
     pass: '',
@@ -52,7 +57,7 @@ const Register = ({ send1 }) => {
           <input
             type="text"
             name="name"
-            value={reguser.name}
+            // value={reguser.name}
             onChange={handleChange}
             placeholder="Enter your name"
           />
@@ -64,7 +69,7 @@ const Register = ({ send1 }) => {
           <input
             type="text"
             name="email"
-            value={reguser.email}
+            // value={reguser.email}
             onChange={handleChange}
             placeholder="Enter your email"
           />
@@ -76,7 +81,7 @@ const Register = ({ send1 }) => {
           <input
             type="text"
             name="user"
-            value={reguser.user}
+            // value={reguser.user}
             onChange={handleChange}
             placeholder="Enter your username"
           />
@@ -88,7 +93,7 @@ const Register = ({ send1 }) => {
           <input
             type="password"
             name="pass"
-            value={reguser.pass}
+            // value={reguser.pass}
             onChange={handleChange}
             placeholder="Enter your password"
           />
@@ -100,7 +105,7 @@ const Register = ({ send1 }) => {
           <input
             type="password"
             name="cpass"
-            value={reguser.cpass}
+            // value={reguser.cpass}
             onChange={handleChange}
             placeholder="Confirm your password"
           />
@@ -109,6 +114,7 @@ const Register = ({ send1 }) => {
 
         <button type="button" onClick={handleReset}>Reset</button>
         <button type="button" onClick={handleRegister}>Register</button>
+        <button type="button" onClick={() => answer()}>Login</button>
 
         <p>{submittedData}</p>
       </form>
