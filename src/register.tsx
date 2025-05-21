@@ -116,7 +116,7 @@ const Register = ({ send1,answer }: RegisterProps) => {
         <button type="button" onClick={handleReset}>Reset</button>
         <button type="button" onClick={handleRegister}>Register</button>
         <button type="button" onClick={() => answer()}>Login</button>
-        <Link to="/">
+        <Link to="/Login">
         <button>gotologin</button></Link>
 
         <p>{submittedData}</p>
