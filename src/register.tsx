@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface RegisterProps {
   send1: (data: string) => void;
@@ -115,6 +116,8 @@ const Register = ({ send1,answer }: RegisterProps) => {
         <button type="button" onClick={handleReset}>Reset</button>
         <button type="button" onClick={handleRegister}>Register</button>
         <button type="button" onClick={() => answer()}>Login</button>
+        <Link to="/">
+        <button>gotologin</button></Link>
 
         <p>{submittedData}</p>
       </form>

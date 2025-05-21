@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link  } from 'react-router-dom';
 
 interface LoginProps {
     send: (data: string) => void;
@@ -31,6 +32,7 @@ const Login = ({ send, answer }: LoginProps) => {
 
     return (
         <div>
+            
             <h1>Login Form</h1>
             <p>Username: {credentials.user}</p>
             <p>Password: {credentials.pass}</p>
@@ -61,6 +63,10 @@ const Login = ({ send, answer }: LoginProps) => {
                 <button type="button" onClick={handleReset}>Reset</button>
                 <button type="button" onClick={handleLogin}>Login</button>
                 <button type="button" onClick={() => answer()}>Login</button>
+                
+                <Link to="/Register">
+                    <button type="button">Register</button>
+                </Link>
 
 
                 <p>{submittedData}</p>
